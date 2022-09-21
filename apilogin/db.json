@@ -2,8 +2,9 @@
     "usuarios":[
         {
             "id": 1,
-            "apellido_paterno": "Gil",
-            "apellido_materno": "Ibarra",
+            "correo": "Gil@correo.com",
+            "telefono": "3101234567",
+            "apellido": "Ibarra",
             "nombre": "Gloria",
             "username": "gegi",
             "password": "01cfcd4f6b8770febfb40cb906715822"
@@ -11,8 +12,9 @@
         },{
             
             "id": 2,
-            "apellido_paterno": "Berrio",
-            "apellido_materno": "Marin",
+            "correo": "marin@correo.com",
+            "telefono": "3117654321",
+            "apellido": "Marin",
             "nombre": "Alejandro",
             "username": "jabm",
             "password": "5cb45b85e3aa6ae16ac66e57377299c8"

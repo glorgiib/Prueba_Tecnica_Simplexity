@@ -34,9 +34,10 @@ class Login extends Component {
             if(Response.length>0){
             var respuesta=Response[0];
             Cookies.set('id', respuesta.id, {path: "/"});
-            Cookies.set('apellido_paterno', respuesta.apellido_paterno, {path: "/"});
-            Cookies.set('apellido_materno', respuesta.apellido_materno, {path: "/"});
+            Cookies.set('apellido', respuesta.apellido, {path: "/"});
+            Cookies.set('correo', respuesta.correo, {path: "/"});
             Cookies.set('nombre', respuesta.nombre, {path: "/"});
+            Cookies.set('telefono', respuesta.telefono, {path: "/"});
             Cookies.set('username', respuesta.username, {path: "/"});
             alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido_paterno}`);
             window.location.href="./menu";
@@ -49,10 +50,8 @@ class Login extends Component {
         })
     }
     
-    componentDidMount(){
-        if (Cookies.get('username')) {
-            window.location.href="./menu";
-        }
+    registrarse(){        
+        window.location.href="./menu";
     }
   render() {
     return (
@@ -78,6 +77,7 @@ class Login extends Component {
                 />
                 <br/>
                 <button className="btn btn-primary" onClick={()=>this.iniciarSesion()}>Iniciar Sesion</button>
+                <button className="btn btn-primary" onClick={()=>this.registrarse()}>Registrarse</button>
             </div>
         </div>
       </div>

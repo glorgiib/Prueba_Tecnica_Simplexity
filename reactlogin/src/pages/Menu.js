@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import Perfil from './perfil';
 
 const cookies = new Cookies();
 
@@ -14,24 +15,14 @@ class Menu extends Component {
         window.location.href='./';
     }
 
-    componentDidMount(){
-        if (!cookies.get('username')) {
-            window.location.href="./";
-        }
-    }
-
   render() {
-    console.log('id: '+ cookies.get('id'));
-    console.log('apellido_paterno: '+cookies.get('apellido'));
-    console.log('apellido_materno: '+cookies.get('apellido_materno'));
-    console.log('nombre: '+cookies.get('nombre'));
-    console.log('username: '+cookies.get('username'));
     return(
         <div>
         Menu Principal
 
         <br />
-        <button onClick={()=>this.cerrarSesion()}>Cerrar Sesion</button>
+        {cookies.get('username') && <button onClick={()=>this.cerrarSesion()}>Cerrar Sesion</button>}
+        <Perfil />
         </div>
     );
      
