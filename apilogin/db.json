@@ -1,0 +1,23 @@
+{
+    "usuarios":[
+        {
+            "id": 1,
+            "apellido_paterno": "Gil",
+            "apellido_materno": "Ibarra",
+            "nombre": "Gloria",
+            "username": "gegi",
+            "password": "01cfcd4f6b8770febfb40cb906715822"
+
+        },{
+            
+            "id": 2,
+            "apellido_paterno": "Berrio",
+            "apellido_materno": "Marin",
+            "nombre": "Alejandro",
+            "username": "jabm",
+            "password": "5cb45b85e3aa6ae16ac66e57377299c8"
+
+        }
+        
+    ]
+}
