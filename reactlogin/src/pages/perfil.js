@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
+import axios from 'axios';
+import md5 from 'md5';
 
 const cookies = new Cookies();
+const baseUrl="http://localhost:3001/usuarios";
 
 
 
@@ -14,6 +17,7 @@ const cookies = new Cookies();
             correo: cookies.get('correo') || '',
             telefono: cookies.get('telefono') || '',
             username: cookies.get('username') || '',
+            password: '',
            
         }
     }
@@ -26,6 +30,62 @@ const cookies = new Cookies();
             }
         });
     }
+
+    registrarUsuario=async()=>{
+
+        await axios.post(baseUrl, {
+            ...this.state.form,
+            password: md5(this.state.form.password)
+
+        })
+        .then(Response=>{
+            console.log(Response.data)
+            return Response.data;
+        })
+        .then(Response=>{
+            var respuesta=Response;
+            cookies.set('id', respuesta.id, {path: "/"});
+            cookies.set('apellido', respuesta.apellido, {path: "/"});
+            cookies.set('correo', respuesta.correo, {path: "/"});
+            cookies.set('nombre', respuesta.nombre, {path: "/"});
+            cookies.set('telefono', respuesta.telefono, {path: "/"});
+            cookies.set('username', respuesta.username, {path: "/"});
+            alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`);
+            window.location.href="./menu";
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
+
+    actualizarUsuario=async()=>{
+
+        await axios.put(baseUrl+'/'+cookies.get('id'), {
+            ...this.state.form,
+            password: md5(this.state.form.password)
+
+        })
+        .then(Response=>{
+            console.log(Response.data)
+            return Response.data;
+        })
+        .then(Response=>{
+            var respuesta=Response;
+            cookies.set('id', respuesta.id, {path: "/"});
+            cookies.set('apellido', respuesta.apellido, {path: "/"});
+            cookies.set('correo', respuesta.correo, {path: "/"});
+            cookies.set('nombre', respuesta.nombre, {path: "/"});
+            cookies.set('telefono', respuesta.telefono, {path: "/"});
+            cookies.set('username', respuesta.username, {path: "/"});
+            alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`);
+            window.location.href="./menu";
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
+
+
   render() {
     return (
         <div className="containerPrincipal">
@@ -78,10 +138,19 @@ const cookies = new Cookies();
                 value={this.state.form.username}
                 onChange={this.handleChange}
                 />
+                 <label>Password: </label>
                 <br/>
-                {!cookies.get('username') && <button className="btn btn-primary" onClick={()=>this.iniciarSesion()}>Registrar</button>}
+                <input
+                type="password"
+                className="form-control"
+                name="password"
+                value={this.state.form.password}
+                onChange={this.handleChange}
+                />
+                <br/>
+                {!cookies.get('username') && <button className="btn btn-primary" onClick={()=>this.registrarUsuario()}>Registrar</button>}
                 {cookies.get('username') && <div>
-                    <button className="btn btn-primary" onClick={()=>this.iniciarSesion()}>Actualizar</button>
+                    <button className="btn btn-primary" onClick={()=>this.actualizarUsuario()}>Actualizar</button>
                     <button className="btn btn-primary" onClick={()=>this.iniciarSesion()}>Eliminar</button>
                 </div>}
             </div>
