@@ -77,8 +77,35 @@ const baseUrl="http://localhost:3001/usuarios";
             cookies.set('nombre', respuesta.nombre, {path: "/"});
             cookies.set('telefono', respuesta.telefono, {path: "/"});
             cookies.set('username', respuesta.username, {path: "/"});
-            alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`);
+            alert(`Tus datos se han actualizado satisfactoriamente ${respuesta.nombre} ${respuesta.apellido}`);
             window.location.href="./menu";
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
+
+    eliminarUsuario=async()=>{
+
+        await axios.delete(baseUrl+'/'+cookies.get('id'), {
+            ...this.state.form,
+            password: md5(this.state.form.password)
+
+        })
+        .then(Response=>{
+            console.log(Response.data)
+            return Response.data;
+        })
+        .then(Response=>{
+            var respuesta=Response;
+            cookies.remove('id', respuesta.id, {path: "/"});
+            cookies.remove('apellido', respuesta.apellido, {path: "/"});
+            cookies.remove('correo', respuesta.correo, {path: "/"});
+            cookies.remove('nombre', respuesta.nombre, {path: "/"});
+            cookies.remove('telefono', respuesta.telefono, {path: "/"});
+            cookies.remove('username', respuesta.username, {path: "/"});
+            alert(`Tus datos se han eliminado satisfactoriamente`);
+            window.location.href="./";
         })
         .catch(error=>{
             console.log(error);
@@ -113,7 +140,7 @@ const baseUrl="http://localhost:3001/usuarios";
                 <label>Correo: </label>
                 <br/>
                 <input
-                type="text"
+                type="email"
                 className="form-control"
                 name="correo"
                 value={this.state.form.correo}
@@ -123,7 +150,7 @@ const baseUrl="http://localhost:3001/usuarios";
                 <label>Telefono:</label>
                 <br/>
                 <input
-                type="number"
+                type="phone"
                 className="form-control"
                 name="telefono"
                 value={this.state.form.telefono}
@@ -151,7 +178,7 @@ const baseUrl="http://localhost:3001/usuarios";
                 {!cookies.get('username') && <button className="btn btn-primary" onClick={()=>this.registrarUsuario()}>Registrar</button>}
                 {cookies.get('username') && <div>
                     <button className="btn btn-primary" onClick={()=>this.actualizarUsuario()}>Actualizar</button>
-                    <button className="btn btn-primary" onClick={()=>this.iniciarSesion()}>Eliminar</button>
+                    <button className="btn btn-primary" onClick={()=>this.eliminarUsuario()}>Eliminar</button>
                 </div>}
             </div>
         </div>
