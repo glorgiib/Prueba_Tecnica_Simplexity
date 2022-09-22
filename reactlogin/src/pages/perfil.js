@@ -14,7 +14,7 @@ const baseUrl="http://localhost:3001/usuarios";
         form:{
             nombre: cookies.get('nombre') || '',
             apellido: cookies.get('apellido') || '',
-            correo: cookies.get('correo') || '',
+            email: cookies.get('email') || '',
             telefono: cookies.get('telefono') || '',
             username: cookies.get('username') || '',
             password: '',
@@ -46,7 +46,7 @@ const baseUrl="http://localhost:3001/usuarios";
             var respuesta=Response;
             cookies.set('id', respuesta.id, {path: "/"});
             cookies.set('apellido', respuesta.apellido, {path: "/"});
-            cookies.set('correo', respuesta.correo, {path: "/"});
+            cookies.set('email', respuesta.email, {path: "/"});
             cookies.set('nombre', respuesta.nombre, {path: "/"});
             cookies.set('telefono', respuesta.telefono, {path: "/"});
             cookies.set('username', respuesta.username, {path: "/"});
@@ -73,7 +73,7 @@ const baseUrl="http://localhost:3001/usuarios";
             var respuesta=Response;
             cookies.set('id', respuesta.id, {path: "/"});
             cookies.set('apellido', respuesta.apellido, {path: "/"});
-            cookies.set('correo', respuesta.correo, {path: "/"});
+            cookies.set('email', respuesta.email, {path: "/"});
             cookies.set('nombre', respuesta.nombre, {path: "/"});
             cookies.set('telefono', respuesta.telefono, {path: "/"});
             cookies.set('username', respuesta.username, {path: "/"});
@@ -100,7 +100,7 @@ const baseUrl="http://localhost:3001/usuarios";
             var respuesta=Response;
             cookies.remove('id', respuesta.id, {path: "/"});
             cookies.remove('apellido', respuesta.apellido, {path: "/"});
-            cookies.remove('correo', respuesta.correo, {path: "/"});
+            cookies.remove('email', respuesta.email, {path: "/"});
             cookies.remove('nombre', respuesta.nombre, {path: "/"});
             cookies.remove('telefono', respuesta.telefono, {path: "/"});
             cookies.remove('username', respuesta.username, {path: "/"});
@@ -137,13 +137,13 @@ const baseUrl="http://localhost:3001/usuarios";
                 value={this.state.form.apellido}
                 onChange={this.handleChange}
                 />
-                <label>Correo: </label>
+                <label>email: </label>
                 <br/>
                 <input
                 type="email"
                 className="form-control"
-                name="correo"
-                value={this.state.form.correo}
+                name="email"
+                value={this.state.form.email}
                 onChange={this.handleChange}
                 />
                 <br/>

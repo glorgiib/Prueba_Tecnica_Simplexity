@@ -26,8 +26,9 @@ class Login extends Component {
     }
     iniciarSesion=async()=>{
 
-        await axios.get(baseUrl, {params: {username: this.state.form.username, password: md5(this.state.form.password)}})
+        await axios.get(`${baseUrl}/username/${this.state.form.username}/password/${md5(this.state.form.password)}`)
         .then(Response=>{
+            console.log(Response)
             return Response.data;
         })
         .then(Response=>{
@@ -35,7 +36,7 @@ class Login extends Component {
             var respuesta=Response[0];
             Cookies.set('id', respuesta.id, {path: "/"});
             Cookies.set('apellido', respuesta.apellido, {path: "/"});
-            Cookies.set('correo', respuesta.correo, {path: "/"});
+            Cookies.set('email', respuesta.email, {path: "/"});
             Cookies.set('nombre', respuesta.nombre, {path: "/"});
             Cookies.set('telefono', respuesta.telefono, {path: "/"});
             Cookies.set('username', respuesta.username, {path: "/"});

@@ -9,7 +9,7 @@ class Menu extends Component {
         cookies.remove('id', {path: "/"});
         cookies.remove('nombre', {path: "/"});
         cookies.remove('apellido', {path: "/"});
-        cookies.remove('correo', {path: "/"});
+        cookies.remove('email', {path: "/"});
         cookies.remove('telefono', {path: "/"});
         cookies.remove('username', {path: "/"});
         window.location.href='./';

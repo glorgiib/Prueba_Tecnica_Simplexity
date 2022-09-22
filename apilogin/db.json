@@ -2,7 +2,7 @@
   "usuarios": [
     {
       "id": 1,
-      "correo": "Gil@correo.com",
+      "email": "Gil@email.com",
       "telefono": "3101234567",
       "apellido": "Ibarra",
       "nombre": "Gloria",
@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "correo": "marin@correo.com",
+      "email": "marin@email.com",
       "telefono": "3117654321",
       "apellido": "Marin",
       "nombre": "Alejandro",
@@ -21,7 +21,7 @@
     {
       "nombre": "fredy",
       "apellido": "hoyos",
-      "correo": "hoyos@correo.com",
+      "email": "hoyos@email.com",
       "telefono": "123456",
       "username": "edy",
       "password": "01cfcd4f6b8770febfb40cb906715822",
@@ -30,7 +30,7 @@
     {
       "nombre": "luis",
       "apellido": "guerra",
-      "correo": "guerra@correo.com",
+      "email": "guerra@email.com",
       "telefono": "654123",
       "username": "luis",
       "password": "d0f88bfbf93f5078ff06490082883764",
@@ -39,7 +39,7 @@
     {
       "nombre": "doris",
       "apellido": "gil",
-      "correo": "ddd@correo.com",
+      "email": "ddd@email.com",
       "telefono": "85236",
       "username": "doris",
       "password": "01cfcd4f6b8770febfb40cb906715822",
@@ -48,7 +48,7 @@
     {
       "nombre": "santiago",
       "apellido": "lopez",
-      "correo": "dd@ddd.com",
+      "email": "dd@ddd.com",
       "telefono": "45697",
       "username": "santi",
       "password": "c37bf859faf392800d739a41fe5af151",
