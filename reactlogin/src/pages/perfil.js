@@ -60,7 +60,7 @@ const baseUrl="http://localhost:3001/usuarios";
 
     actualizarUsuario=async()=>{
 
-        await axios.put(baseUrl+'/'+cookies.get('id'), {
+        await axios.put(baseUrl, {
             ...this.state.form,
             password: md5(this.state.form.password)
 
@@ -87,7 +87,7 @@ const baseUrl="http://localhost:3001/usuarios";
 
     eliminarUsuario=async()=>{
 
-        await axios.delete(baseUrl+'/'+cookies.get('id'), {
+        await axios.delete(baseUrl+'/'+cookies.get('username'), {
             ...this.state.form,
             password: md5(this.state.form.password)
 

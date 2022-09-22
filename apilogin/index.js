@@ -60,7 +60,6 @@ app.post('/usuarios', (req, res) => {
         knex('usuarios')
         .insert({username,email,telefono,nombre,apellido})
         .then((users) => {
-            console.log(users)
             return res.json({username,email,telefono,nombre,apellido});
         })
         .catch((err) => {
@@ -76,6 +75,53 @@ app.post('/usuarios', (req, res) => {
     
 });
 
+app.put('/usuarios', (req, res) => {
+    const {username,password,email,telefono,nombre,apellido} = req.body;
+
+    knex('login').where("login.username","=",username)
+    .update({username,password})
+    .then((element) => {
+        knex('usuarios').where("usuarios.username","=",username)
+        .update({username,email,telefono,nombre,apellido})
+        .then((users) => {
+            return res.json({username,email,telefono,nombre,apellido});
+        })
+        .catch((err) => {
+            console.error(err);
+            return res.json({success: false, message: 'An error occurred, please try again later.'});
+        })
+    })
+    .catch((err) => {
+        console.error(err);
+        return res.json({success: false, message: 'An error occurred, please try again later.'});
+    })
+
+    
+});
+
+app.delete('/usuarios/:username', (req, res) => {
+    const {username} = req.params;
+    console.log('username',username)
+    knex('login').where("login.username","=",username)
+    .del()
+    .then((element) => {
+        knex('usuarios').where("usuarios.username","=",username)
+        .del()
+        .then((users) => {
+            return res.json({success: true});
+        })
+        .catch((err) => {
+            console.error(err);
+            return res.json({success: false, message: 'An error occurred, please try again later.'});
+        })
+    })
+    .catch((err) => {
+        console.error(err);
+        return res.json({success: false, message: 'An error occurred, please try again later.'});
+    })
+
+    
+});
 
 
 app.listen(port, () => {
