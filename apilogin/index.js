@@ -25,7 +25,6 @@ app.get('/usuarios', (req, res) => {
     knex('usuarios')
     .select()
     .then((users) => {
-        // res.send('Hello World!');
         return res.json(users);
     })
     .catch((err) => {
@@ -43,7 +42,6 @@ app.get('/usuarios/username/:username/password/:password', (req, res) => {
     .where("login.username","=",username)
     .where("login.password","=",password)
     .then((users) => {
-        // res.send('Hello World!');
         return res.json(users);
     })
     .catch((err) => {
@@ -51,6 +49,33 @@ app.get('/usuarios/username/:username/password/:password', (req, res) => {
         return res.json({success: false, message: 'An error occurred, please try again later.'});
     })
 });
+
+
+app.post('/usuarios', (req, res) => {
+    const {username,password,email,telefono,nombre,apellido} = req.body;
+
+    knex('login')
+    .insert({username,password})
+    .then((element) => {
+        knex('usuarios')
+        .insert({username,email,telefono,nombre,apellido})
+        .then((users) => {
+            console.log(users)
+            return res.json({username,email,telefono,nombre,apellido});
+        })
+        .catch((err) => {
+            console.error(err);
+            return res.json({success: false, message: 'An error occurred, please try again later.'});
+        })
+    })
+    .catch((err) => {
+        console.error(err);
+        return res.json({success: false, message: 'An error occurred, please try again later.'});
+    })
+
+    
+});
+
 
 
 app.listen(port, () => {

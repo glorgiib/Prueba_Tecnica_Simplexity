@@ -3,7 +3,7 @@
 CREATE TABLE `sitio`.`usuarios` (
   `username` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NULL,
-  `id` VARCHAR(45) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `apellido` VARCHAR(45) NULL,
   `telefono` VARCHAR(45) NULL,
@@ -33,19 +33,19 @@ ADD CONSTRAINT `username`
 -- insertar 5 usuarios de prueba
 
 INSERT INTO `sitio`.`login` (`username`, `password`) VALUES ('alejo86a', '01cfcd4f6b8770febfb40cb906715822');
-INSERT INTO `sitio`.`usuarios` (`id`,`username`, `email`, `id`, `nombre`, `apellido`, `telefono`) VALUES ('1','alejo86a', 'alejo86a@hotmail.com', '', 'alejo', 'marin', '3131234567');
+INSERT INTO `sitio`.`usuarios` (`username`, `email`,  `nombre`, `apellido`, `telefono`) VALUES ('alejo86a', 'alejo86a@hotmail.com', '', 'alejo', 'marin', '3131234567');
 
 INSERT INTO `sitio`.`login` (`username`, `password`) VALUES ('glorgiib', '01cfcd4f6b8770febfb40cb906715822');
-INSERT INTO `sitio`.`usuarios` (`id`,`username`, `email`, `nombre`, `apellido`, `telefono`) VALUES ('2', 'glorgiib', 'glorgiib@hotmail.com', 'gloria', 'gil', '3139876543');
+INSERT INTO `sitio`.`usuarios` (`username`, `email`, `nombre`, `apellido`, `telefono`) VALUES ('glorgiib', 'glorgiib@hotmail.com', 'gloria', 'gil', '3139876543');
 
 INSERT INTO `sitio`.`login` (`username`, `password`) VALUES ('fredyho', '01cfcd4f6b8770febfb40cb906715822');
-INSERT INTO `sitio`.`usuarios` (`id`,`username`, `email`, `nombre`, `apellido`, `telefono`) VALUES ('3', 'fredyho', 'fredyho@hotmail.com', 'fredy', 'hoyos', '3138526974');
+INSERT INTO `sitio`.`usuarios` (`username`, `email`, `nombre`, `apellido`, `telefono`) VALUES ('fredyho', 'fredyho@hotmail.com', 'fredy', 'hoyos', '3138526974');
 
 INSERT INTO `sitio`.`login` (`username`, `password`) VALUES ('santilo', '01cfcd4f6b8770febfb40cb906715822');
-INSERT INTO `sitio`.`usuarios` (`id`,`username`, `email`,  `nombre`, `apellido`, `telefono`) VALUES ('4', 'santilo', 'santilo@hotmail.com', 'santiago', 'lopez', '3136542171');
+INSERT INTO `sitio`.`usuarios` (`username`, `email`,  `nombre`, `apellido`, `telefono`) VALUES ('santilo', 'santilo@hotmail.com', 'santiago', 'lopez', '3136542171');
 
 INSERT INTO `sitio`.`login` (`username`, `password`) VALUES ('marire', '01cfcd4f6b8770febfb40cb906715822');
-INSERT INTO `sitio`.`usuarios` (`id`,`username`, `email`, `nombre`, `apellido`, `telefono`) VALUES ('5', 'marire', 'marire@hotmail.com',  'mariana', 'restrepo', '3133691281');
+INSERT INTO `sitio`.`usuarios` (`username`, `email`, `nombre`, `apellido`, `telefono`) VALUES ('marire', 'marire@hotmail.com',  'mariana', 'restrepo', '3133691281');
 
 -- obtener los usuario y sus datos de login
 
